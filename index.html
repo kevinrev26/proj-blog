@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Personal Blog</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Tahoma:wght@400;700&family=Trebuchet+MS:wght@400;700&family=VT323&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- SCANLINES overlay -->
+  <div class="scanlines"></div>
+  <!-- CRT noise -->
+  <canvas id="noise-canvas"></canvas>
+
+  <!-- ═══════ HEADER ═══════ -->
+  <header id="site-header">
+    <div class="header-inner">
+      <div class="logo-zone">
+        <div class="logo-icon">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <rect width="32" height="32" rx="6" fill="url(#logoGrad)"/>
+            <text x="16" y="22" text-anchor="middle" font-size="18" font-family="VT323" fill="#fff">&#60;/&#62;</text>
+            <defs>
+              <linearGradient id="logoGrad" x1="0" y1="0" x2="32" y2="32">
+                <stop offset="0%" stop-color="#1a6fff"/>
+                <stop offset="100%" stop-color="#0a2a8a"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <span class="logo-name">Kevin Rivera<span class="cursor-blink">_</span></span>
+          <span class="logo-sub">personal blog &amp; portfolio</span>
+        </div>
+      </div>
+
+      <nav id="main-nav">
+        <a href="#about"    class="nav-tab active" data-section="about">
+          <span class="nav-icon">◈</span> About
+        </a>
+        <a href="#blog"     class="nav-tab" data-section="blog">
+          <span class="nav-icon">◉</span> Blog
+        </a>
+        <a href="#projects" class="nav-tab" data-section="projects">
+          <span class="nav-icon">◧</span> Projects
+        </a>
+        <a href="#resume"   class="nav-tab" data-section="resume">
+          <span class="nav-icon">◫</span> Resume
+        </a>
+        <a href="#now"      class="nav-tab" data-section="now">
+          <span class="nav-icon">◎</span> Now
+        </a>
+      </nav>
+
+      <div class="header-right">
+        <div class="status-badge">
+          <span class="status-dot"></span>
+          <span class="status-text">online</span>
+        </div>
+        <div class="clock" id="clock">00:00:00</div>
+      </div>
+    </div>
+    <div class="header-glow"></div>
+  </header>
+
+  <!-- ═══════ MAIN CONTENT ═══════ -->
+  <main id="main-content">
+
+    <!-- ─── ABOUT ─── -->
+    <section id="about" class="section active">
+      <div class="section-inner">
+        <div class="about-grid">
+          <div class="about-card glass-panel">
+            <div class="panel-titlebar">
+              <span class="titlebar-icon">◈</span>
+              <span>whoami</span>
+              <div class="titlebar-buttons">
+                <span class="tb-btn tb-min"></span>
+                <span class="tb-btn tb-max"></span>
+                <span class="tb-btn tb-close"></span>
+              </div>
+            </div>
+            <div class="panel-body">
+              <div class="avatar-zone">
+                <div class="avatar-frame">
+                  <div class="avatar-placeholder">
+                    <span class="avatar-initials">KR</span>
+                  </div>
+                  <div class="avatar-glow-ring"></div>
+                </div>
+                <div class="online-status">
+                  <span class="status-dot pulse"></span> disponible para oportunidades
+                </div>
+              </div>
+              <div class="about-bio">
+                <h1 class="bio-name">Kevin Rivera</h1>
+                <p class="bio-title">// Software Developer &amp; Tech Writer</p>
+                <p class="bio-text">
+                  Hi! I'm a software developer passionate about technology, distributed systems, and writing about what I learn. 
+                  This is my space on the internet — no paywalls, no trackers.
+                </p>
+                <div class="bio-tags">
+                  <span class="tag">Python</span>
+                  <span class="tag">JavaScript</span>
+                  <span class="tag">Linux</span>
+                  <span class="tag">DevOps</span>
+                  <span class="tag">Open Source</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-sidebar">
+            <div class="glass-panel widget">
+              <div class="panel-titlebar">
+                <span class="titlebar-icon">◉</span>
+                <span>contacto</span>
+              </div>
+              <div class="panel-body contact-list">
+                <a href="kevinrev26@gmail.com" class="contact-row">
+                  <span class="contact-icon">✉</span>
+                  <span>kevinrev26@gmail.com</span>
+                </a>
+                <a href="https://github.com/kevinrev26" target="_blank" class="contact-row">
+                  <span class="contact-icon">◎</span>
+                  <span>github</span>
+                </a>
+                <a href="https://twitter.com/kevinrev26" target="_blank" class="contact-row">
+                  <span class="contact-icon">◈</span>
+                  <span>@kevinrev26</span>
+                </a>
+                <a href="https://www.linkedin.com/in/kevin-rivera-8a1ab6114/" target="_blank" class="contact-row">
+                  <span class="contact-icon">◧</span>
+                  <span>linkedin</span>
+                </a>
+              </div>
+            </div>
+<!-- 
+            <div class="glass-panel widget">
+              <div class="panel-titlebar">
+                <span class="titlebar-icon">◫</span>
+                <span>stats</span>
+              </div>
+              <div class="panel-body stats-list">
+                <div class="stat-row">
+                  <span class="stat-label">posts publicados</span>
+                  <span class="stat-val counter" data-target="12">0</span>
+                </div>
+                <div class="stat-row">
+                  <span class="stat-label">proyectos</span>
+                  <span class="stat-val counter" data-target="8">0</span>
+                </div>
+                <div class="stat-row">
+                  <span class="stat-label">años de experiencia</span>
+                  <span class="stat-val counter" data-target="5">0</span>
+                </div>
+                <div class="stat-row">
+                  <span class="stat-label">café consumido</span>
+                  <span class="stat-val">∞</span>
+                </div>
+              </div>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── BLOG ─── -->
+    <section id="blog" class="section">
+      <div class="section-inner">
+        <div class="section-header">
+          <h2 class="section-title"><span class="title-prefix">//</span> Blog Técnico</h2>
+          <div class="section-line"></div>
+        </div>
+
+        <div class="blog-layout">
+          <!-- Post list -->
+          <div class="posts-list" id="posts-list">
+
+            <!-- <article class="post-card glass-panel" data-post="post1">
+              <div class="panel-titlebar">
+                <span class="titlebar-icon">◉</span>
+                <span class="post-category">DevOps</span>
+                <div class="post-date">14 Feb 2025</div>
+              </div>
+              <div class="panel-body post-preview">
+                <h3 class="post-title">Cómo monté mi servidor en casa con Proxmox</h3>
+                <p class="post-excerpt">
+                  Guía paso a paso para virtualizar tu homelab: desde la instalación de Proxmox VE hasta 
+                  configurar VMs con pfSense, TrueNAS y Jellyfin en la misma máquina.
+                </p>
+                <div class="post-meta">
+                  <div class="post-tags">
+                    <span class="tag small">proxmox</span>
+                    <span class="tag small">homelab</span>
+                    <span class="tag small">linux</span>
+                  </div>
+                  <button class="read-more-btn" data-post="post1">leer más →</button>
+                </div>
+              </div>
+            </article>
+
+            <article class="post-card glass-panel" data-post="post2">
+              <div class="panel-titlebar">
+                <span class="titlebar-icon">◉</span>
+                <span class="post-category">Python</span>
+                <div class="post-date">02 Ene 2025</div>
+              </div>
+              <div class="panel-body post-preview">
+                <h3 class="post-title">Async Python: lo que nadie te explica bien</h3>
+                <p class="post-excerpt">
+                  asyncio, event loops, coroutines y por qué tu código "async" probablemente 
+                  sigue siendo síncrono en los momentos que más importan.
+                </p>
+                <div class="post-meta">
+                  <div class="post-tags">
+                    <span class="tag small">python</span>
+                    <span class="tag small">asyncio</span>
+                    <span class="tag small">backend</span>
+                  </div>
+                  <button class="read-more-btn" data-post="post2">leer más →</button>
+                </div>
+              </div>
+            </article>
+
+            <article class="post-card glass-panel" data-post="post3">
+              <div class="panel-titlebar">
+                <span class="titlebar-icon">◉</span>
+                <span class="post-category">JavaScript</span>
+                <div class="post-date">10 Nov 2024</div>
+              </div>
+              <div class="panel-body post-preview">
+                <h3 class="post-title">Construí este blog sin frameworks y sobreviví</h3>
+                <p class="post-excerpt">
+                  Por qué elegí HTML, CSS y JS vanilla sobre React/Next.js para mi blog personal,
+                  y qué aprendí sobre el DOM en el proceso.
+                </p>
+                <div class="post-meta">
+                  <div class="post-tags">
+                    <span class="tag small">javascript</span>
+                    <span class="tag small">vanilla</span>
+                    <span class="tag small">web</span>
+                  </div>
+                  <button class="read-more-btn" data-post="post3">leer más →</button>
+                </div>
+              </div>
+            </article> -->
+
+          </div>
+
+          <!-- Post reader -->
+          <div class="post-reader glass-panel" id="post-reader" style="display:none;">
+            <div class="panel-titlebar">
+              <span class="titlebar-icon">◉</span>
+              <span id="reader-category">Post</span>
+              <button class="close-reader" id="close-reader">✕ cerrar</button>
+            </div>
+            <div class="panel-body" id="reader-body">
+              <!-- content injected by JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── PROJECTS ─── -->
+    <section id="projects" class="section">
+      <div class="section-inner">
+        <div class="section-header">
+          <h2 class="section-title"><span class="title-prefix">//</span> Projects</h2>
+          <div class="section-line"></div>
+        </div>
+
+        <div class="projects-grid">
+
+          <div class="project-card glass-panel">
+            <div class="panel-titlebar">
+              <span class="titlebar-icon">◧</span>
+              <span>Game of War (And other city building games)</span>
+              <span class="project-status status-done">Finished</span>
+            </div>
+            <div class="panel-body">
+              <p class="project-desc">
+                Blog personal con estética Web 2.0 / Windows Aero. HTML, CSS y JS vanilla,
+                sin frameworks, sin build tools, sin dependencias de NPM.
+              </p>
+              <div class="project-stack">
+                <span class="tag small">Lua</span>
+                <span class="tag small">C++</span>
+                <span class="tag small">Python</span>
+                <span class="tag small">AWS</span>
+              </div>
+              <div class="project-links">
+                <a href="https://play.google.com/store/apps/details?id=com.machinezone.gow" class="proj-link">◈ Demo</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card glass-panel">
+            <div class="panel-titlebar">
+              <span class="titlebar-icon">◧</span>
+              <span>Simbotic Engine</span>
+              <span class="project-status status-done">Finished</span>
+            </div>
+            <div class="panel-body">
+              <p class="project-desc">
+                An advanced simulation platform that bridges virtual and physical worlds, enabling AI systems to learn through realistic interaction and environmental understanding.
+              </p>
+              <div class="project-stack">
+                <span class="tag small">Python</span>
+                <span class="tag small">FastAPI</span>
+                <span class="tag small">Docker</span>
+              </div>
+              <div class="project-links">
+                <!-- <a href="#" class="proj-link">◎ GitHub</a> -->
+                <a href="https://simbotic.ai/" class="proj-link">◈ Demo</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card glass-panel">
+            <div class="panel-titlebar">
+              <span class="titlebar-icon">◧</span>
+              <span>Project Mood Flow</span>
+              <span class="project-status status-wip">In Progress</span>
+            </div>
+            <div class="panel-body">
+              <p class="project-desc"> A play store web scrapper to determinate tendencies for apps and seek for improving or cloning app oportunities </p>
+              <div class="project-stack">
+                <span class="tag small">Fast API</span>
+                <span class="tag small">Alpine.js</span>
+                <span class="tag small">PostgreSQL</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/kevinrev26/proj-moodflow" class="proj-link">◎ GitHub</a>
+              </div>
+            </div>
+          </div>
+          <div class="project-card glass-panel">
+            <div class="panel-titlebar">
+              <span class="titlebar-icon">◧</span>
+              <span>RoboxMaker</span>
+              <span class="project-status status-done">Finished</span>
+            </div>
+            <div class="panel-body">
+              <p class="project-desc">
+                We are an educational robotics program that benefits children and young people from preschool through high school, enhancing their creative, technological, and scientific skills. Our educational resources are designed to foster a playful, project-based learning environment, prioritizing problem-solving and integrating science, technology, engineering, and art.
+              </p>
+              <div class="project-stack">
+                <span class="tag small">Python</span>
+                <span class="tag small">Docker</span>
+                <span class="tag small">Redis</span>
+                <span class="tag small">DRF</span>
+              </div>
+              <div class="project-links">
+                <!-- <a href="#" class="proj-link">◎ GitHub</a> -->
+                <a href="https://www.roboxmaker.com/" class="proj-link">◈ Demo</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card glass-panel">
+            <div class="panel-titlebar">
+              <span class="titlebar-icon">◧</span>
+              <span>este blog</span>
+              <span class="project-status status-active">activo</span>
+            </div>
+            <div class="panel-body">
+              <p class="project-desc">
+                Blog personal con estética Web 2.0 / Windows Aero. HTML, CSS y JS vanilla,
+                sin frameworks, sin build tools, sin dependencias de NPM.
+              </p>
+              <div class="project-stack">
+                <span class="tag small">HTML</span>
+                <span class="tag small">CSS</span>
+                <span class="tag small">JS</span>
+              </div>
+              <div class="project-links">
+                <a href="#" class="proj-link">◎ GitHub</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── RESUME ─── -->
+    <section id="resume" class="section">
+      <div class="section-inner">
+        <div class="section-header">
+          <h2 class="section-title"><span class="title-prefix">//</span> Resume</h2>
+          <div class="section-line"></div>
+        </div>
+
+        <div class="resume-layout">
+          <!-- Experience -->
+          <div class="resume-block glass-panel">
+            <div class="panel-titlebar">
+              <span class="titlebar-icon">◫</span>
+              <span>Experience</span>
+            </div>
+            <div class="panel-body">
+              <div class="timeline">
+
+                <div class="timeline-item">
+                  <div class="timeline-dot"></div>
+                  <div class="timeline-content">
+                    <div class="tl-header">
+                      <span class="tl-role">Backend Developer - Freelance Colabs.</span>
+                      <span class="tl-period">2025</span>
+                    </div>
+                    <div class="tl-company">Freelance</div>
+                    <ul class="tl-desc-list">
+                      <li>Designed and deployed a cloud-based electronic medical record (EMR) backend using Django, enabling doctors and clinics to manage patient data securely through a scalable web platform.</li>
+                      <li>Architected and deployed electronic billing and inventory management platforms for SMEs across El Salvador, enabling tax compliance and operational workflow automation using Django, FastAPI, and PostgreSQL.</li>
+                    </ul>
+                    <div class="tl-stack">
+                      <span class="tag small">Python</span>
+                      <span class="tag small">Django</span>
+                      <span class="tag small">Docker & Docker Compose</span>
+                      <span class="tag small">Postgres</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="timeline-item">
+                  <div class="timeline-dot"></div>
+                  <div class="timeline-content">
+                    <div class="tl-header">
+                      <span class="tl-role">Backend/Gameplay Engineer</span>
+                      <span class="tl-period">June 2021 —  January 2025</span>
+                    </div>
+                    <div class="tl-company">Motmot Tech (Assigned to Machine Zone)</div>
+                    <ul class="tl-desc-list">
+                      <li>Architected and deployed data-driven event systems enabling game designers to rapidly deliver weekend gameplay experiences, reducing event implementation time and increasing player engagement.</li>
+                      <li>Designed and built internal analytics platforms and dashboards for Customer Service and Business Intelligence teams, enabling data-driven decision making based on player behavior and contributing to revenue optimization.</li>
+                      <li>Led development of gameplay progression and monetization features requiring coordination between frontend interfaces, backend services, and asynchronous messaging systems (RabbitMQ), ensuring consistent player state synchronization in a large-scale asynchronous game environment.</li>
+                      <li>Investigated and resolved production gameplay issues using Grafana and Kibana observability tools, improving system stability, gameplay reliability, and overall code quality in live game environments.</li>
+                      <li>Collaborated with front-end and DevOps teams to ensure seamless CI/CD deployment.</li>
+                      <li>Implemented asynchronous task processing using RabbitMQ for scalable handling of high-traffic API requests.</li>
+                      <li>Developed and managed scheduled tasks using cron jobs for automated data processing so the players can have an ecosystem tune for mobile gaming experiences.</li>                  
+                    </ul>
+                    <div class="tl-stack">
+                      <span class="tag small">Django</span>
+                      <span class="tag small">React</span>
+                      <span class="tag small">Redis</span>
+                      <span class="tag small">Lua</span>
+                      <span class="tag small">C++</span>
+                      <span class="tag small">AWS</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="timeline-item">
+                  <div class="timeline-dot"></div>
+                  <div class="timeline-content">
+                    <div class="tl-header">
+                      <span class="tl-role">Backend Engineer</span>
+                      <span class="tl-period">October 2018 —  May 2021</span>
+                    </div>
+                    <div class="tl-company">Vertex Studio</div>
+                    <ul class="tl-desc-list">
+                      <li>Architected Simbotic Engine, a Unreal Engine–based synthetic data platform enabling programmatic generation of diverse simulated environments and lighting conditions, accelerating large-scale dataset creation for AI training workflows and earning an Epic MegaGrant award.</li>
+                      <li>Architected a cloud-based robotics learning platform supporting institutional users and delivering an interactive browser-based 3D simulation environment using React and Three.js for real-time robotics experimentation.                      </li>
+                      <li>Led development of gameplay progression and monetization features requiring coordination between frontend interfaces, backend services, and asynchronous messaging systems (RabbitMQ), ensuring consistent player state synchronization in a large-scale asynchronous game environment.</li>
+                      <li>Implemented authentication and authorization systems (OAuth2, JWT).</li>
+                      <li>Developed AI-driven applications integrating computer vision models with backend APIs.</li>
+                      <li>Integrated third-party APIs (e.g., payment gateways or computer vision services) into core systems.</li>
+                      <li>Developed and managed scheduled tasks using cron jobs for automated data processing so the players can have an ecosystem tune for mobile gaming experiences.</li>                  
+                    </ul>
+                    <div class="tl-stack">
+                      <span class="tag small">Python</span>
+                      <span class="tag small">Javascript</span>
+                      <span class="tag small">Threejs</span>
+                      <span class="tag small">C++</span>
+                      <span class="tag small">Docker</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="timeline-item">
+                  <div class="timeline-dot"></div>
+                  <div class="timeline-content">
+                    <div class="tl-header">
+                      <span class="tl-role">Simulation Engineer</span>
+                      <span class="tl-period">Januart 2019 — Januart 2020</span>
+                    </div>
+                    <div class="tl-company">Vertex Studio (Assigned to Shield AI)</div>
+                    <ul class="tl-desc-list">
+                      <li>Developed a synthetic data generation pipeline using Unreal Engine to produce procedurally generated simulation environments for autonomous drone training, delivering large-scale datasets to machine learning teams for model development.</li>                    </ul>
+                    <div class="tl-stack">
+                      <span class="tag small">Python</span>
+                      <span class="tag small">Unreal Engine</span>
+                      <span class="tag small">Open CV</span>
+                      <span class="tag small">C++</span>
+                      <span class="tag small">Bazel</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- Education + Skills -->
+          <div class="resume-sidebar">
+            <div class="glass-panel">
+              <div class="panel-titlebar">
+                <span class="titlebar-icon">◫</span>
+                <span>Education</span>
+              </div>
+              <div class="panel-body">
+                <div class="edu-item">
+                  <div class="edu-degree">Systems Engineering</div>
+                  <div class="edu-place">Universidad Nacional de El Salvador.</div>
+                  <div class="edu-year">2015 — 2019</div>
+                </div>
+                <div class="edu-item">
+                  <div class="edu-degree">AWS Cloud Developing trained.</div>
+                  <div class="edu-place">Amazon Web Services Academy.</div>
+                  <div class="edu-year">2025</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="glass-panel">
+              <div class="panel-titlebar">
+                <span class="titlebar-icon">◫</span>
+                <span>skills</span>
+              </div>
+              <div class="panel-body skills-grid">
+                <div class="skill-group">
+                  <div class="skill-group-label">Backend</div>
+                  <div class="skill-bar-wrap"><div class="skill-bar" data-pct="90"><div class="skill-fill"></div></div><span class="skill-name">Python</span></div>
+                  <div class="skill-bar-wrap"><div class="skill-bar" data-pct="70"><div class="skill-fill"></div></div><span class="skill-name">Node.js</span></div>
+                  <div class="skill-bar-wrap"><div class="skill-bar" data-pct="60"><div class="skill-fill"></div></div><span class="skill-name">C++</span></div>
+                </div>
+                <div class="skill-group">
+                  <div class="skill-group-label">Infra</div>
+                  <div class="skill-bar-wrap"><div class="skill-bar" data-pct="85"><div class="skill-fill"></div></div><span class="skill-name">Linux</span></div>
+                  <div class="skill-bar-wrap"><div class="skill-bar" data-pct="80"><div class="skill-fill"></div></div><span class="skill-name">Docker/K8s</span></div>
+                  <div class="skill-bar-wrap"><div class="skill-bar" data-pct="70"><div class="skill-fill"></div></div><span class="skill-name">AWS</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── NOW ─── -->
+    <section id="now" class="section">
+      <div class="section-inner">
+        <div class="section-header">
+          <h2 class="section-title"><span class="title-prefix">//</span> Now</h2>
+          <div class="section-line"></div>
+          <span class="now-date">Actualizado: Febrero 2026</span>
+        </div>
+
+        <div class="now-grid">
+
+          <div class="now-card glass-panel">
+            <div class="panel-titlebar">
+              <span class="titlebar-icon">◎</span>
+              <span>Learning</span>
+            </div>
+            <div class="panel-body">
+              <ul class="now-list">
+                <li><span class="list-bullet">▸</span> Golang — Starting the journey.</li>
+                <li><span class="list-bullet">▸</span> Distributed Systems — Reading "Designing Data-Intensive Applications". </li>
+                <li><span class="list-bullet">▸</span> K8s — Implementing it with a document ingesture system with kafka and Vector DB.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="now-card glass-panel">
+            <div class="panel-titlebar">
+              <span class="titlebar-icon">◎</span>
+              <span>Building</span>
+            </div>
+            <div class="panel-body">
+              <ul class="now-list">
+                <li><span class="list-bullet">▸</span> This blog — obvious</li>
+                <li><span class="list-bullet">▸</span>RAG Pipeline Infrastructure — A system that ingests documents (PDF, text), processes them asynchronously.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="now-card glass-panel">
+            <div class="panel-titlebar">
+              <span class="titlebar-icon">◎</span>
+              <span>Reading</span>
+            </div>
+            <div class="panel-body">
+              <ul class="now-list">
+                <li><span class="list-bullet">▸</span> "A Philosophy of Software Design"</li>
+                <li><span class="list-bullet">▸</span> Blogs de Linus, Fabrice Bellard, Dan Luu</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="now-card glass-panel">
+            <div class="panel-titlebar">
+              <span class="titlebar-icon">◎</span>
+              <span>Using right now</span>
+            </div>
+            <div class="panel-body">
+              <ul class="now-list">
+                <li><span class="list-bullet">▸</span> Ubuntu.</li>
+                <li><span class="list-bullet">▸</span> Vscode, nothing new.</li>
+                <li><span class="list-bullet">▸</span> My notebook and hand written notes.</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══════ FOOTER ═══════ -->
+  <footer id="site-footer">
+    <div class="footer-inner">
+      <span class="footer-text">© 2026 Kevin Rivera — without frameworks</span>
+      <span class="footer-text">made with <span class="heart">♥</span> &amp; beer. 🍺</span>
+      <span class="footer-version">v1.0.0</span>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
